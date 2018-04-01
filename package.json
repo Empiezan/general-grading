@@ -1,0 +1,51 @@
+{
+  "name": "instascan",
+  "version": "2.0.0",
+  "description": "Webcam-driven QR code scanner.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "files": [
+    "src/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schmich/instascan.git"
+  },
+  "keywords": [
+    "qr",
+    "code",
+    "quick",
+    "response",
+    "scan",
+    "scanner",
+    "webcam",
+    "realtime"
+  ],
+  "author": "Chris Schmich <schmch@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/schmich/instascan/issues"
+  },
+  "homepage": "https://github.com/schmich/instascan",
+  "devDependencies": {
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.4.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-transform": "^3.0.5",
+    "gulp-uglify": "^3.0.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "fsm-as-promised": "^0.14.5",
+    "visibilityjs": "^1.2.4",
+    "webrtc-adapter": "^6.1.4"
+  }
+}
