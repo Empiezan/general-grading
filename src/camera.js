@@ -18,18 +18,38 @@ class Camera {
   }
 
   async start() {
-    this._stream = await Camera._wrapErrors(async () => {
-      return navigator.mediaDevices.getUserMedia({
+    let constraints;
+
+    if (iOS) {
+      constraints = {
         audio: false,
         video: {
-          deviceId: {
-            exact: this.id
-          }
+          facingMode: 'environment',
+          mandatory: {
+            sourceId: this.id,
+            minWidth: 600,
+            maxWidth: 800,
+            minAspectRatio: 1.6
+          },
+          optional: []
         }
-      });
-    });
+      };
+    } else {
+      constraints = {
+        audio: false,
+        video: {
+          mandatory: {
+            sourceId: this.id,
+            minWidth: 600,
+            maxWidth: 800,
+            minAspectRatio: 1.6
+          },
+          optional: []
+        }
+      };
+    }
 
-    return this._stream;
+
   }
 
   stop() {

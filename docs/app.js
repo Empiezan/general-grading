@@ -4,11 +4,17 @@ var app = new Vue({
     scanner: null,
     activeCameraId: null,
     cameras: [],
-    scans: []
+    scans: [],
   },
   mounted: function () {
     var self = this;
-    self.scanner = new Instascan.Scanner({ video: document.getElementById('preview'), scanPeriod: 5 });
+    self.scanner = new Instascan.Scanner({
+      video: document.getElementById('preview'),
+      scanPeriod: 5,
+      continuous: true,
+      // refractoryPeriod: 500,
+      mirror: false
+    });
     self.scanner.addListener('scan', function (content, image) {
       // self.scans.unshift({ date: +(Date.now()), content: content });
       console.log(content);
@@ -46,8 +52,19 @@ var app = new Vue({
     Instascan.Camera.getCameras().then(function (cameras) {
       self.cameras = cameras;
       if (cameras.length > 0) {
-        self.activeCameraId = cameras[0].id;
-        self.scanner.start(cameras[0]);
+        if (window.navigator.userAgent.match(/iPhone/i) || window.navigator.userAgent.match(/iPad/i)) {
+          self.activeCameraId = cameras[1].id;
+          self.scanner.start(cameras[1]);
+        }
+        else if (cameras[1]) {
+          self.activeCameraId = cameras[1].id;
+          self.scanner.start(cameras[1]);
+          // alert("hi");
+        }
+        else {
+          self.activeCameraId = cameras[0].id;
+          self.scanner.start(cameras[0]);
+        }
       } else {
         console.error('No cameras found.');
       }

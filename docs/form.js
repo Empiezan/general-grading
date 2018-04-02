@@ -172,7 +172,7 @@ $(document).ready(function() {
     });
 
     $("#next").click(function () {
-      // app.data.scanner.stop();
+      app.scanner.stop();
       document.getElementById("selfie").style.display = 'none';
       document.getElementById("test-info").style.display = 'block';
       // let length = document.getElementById('testID').value.length;
@@ -201,7 +201,7 @@ $(document).ready(function() {
     });
 
     $("#back").click(function () {
-      // app.data.scanner.start();
+      app.scanner.start();
       document.getElementById("selfie").style.display = 'inline-block';
       document.getElementById("selfie").style.width = '65%';
       document.getElementById("test-info").style.display = 'none';
@@ -250,7 +250,7 @@ $(document).ready(function() {
 
     $("#qr-on-label").click(function() {
       // if (document.getElementById("next").display == 'none') {
-        // app.data.scanner.start();
+        app.scanner.start();
         document.getElementById("selfie").style.display = 'inline-block';
         document.getElementById("selfie").style.width = '65%';
         document.getElementById("test-info").style.display = 'none';
@@ -266,7 +266,7 @@ $(document).ready(function() {
     });
 
     $("#qr-off-label").click(function() {
-      // app.data.scanner.stop();
+      app.scanner.stop();
       document.getElementById("selfie").style.display = 'none';
       document.getElementById("test-info").style.display = 'block';
       // let length = document.getElementById('testID').value.length;

@@ -3,7 +3,7 @@ function handleClientLoad() {
 }
 
 
-var CLIENT_ID = '354059627602-lpe9ne2e37rng05tek29f3qs44to0767.apps.googleusercontent.com';
+var CLIENT_ID = '354059627602-91o8avp9s96igouvojgpehmd78aedfja.apps.googleusercontent.com';
 var API_KEY = 'AIzaSyDhOkCc2UiXpUleFMaC8NJvkWPuyxBx0x4';
 // Array of API discovery doc URLs for APIs used by the quickstart
 var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
@@ -108,7 +108,7 @@ function writeScore() {
         else if (testType == 'ENV' || testType == 'BODY' || testType == 'COOK') {
             col = scoreDict[qId + 1];
         }
-        else if (testType == 'TEA') {
+        else if (testType == 'TEAM') {
             col = scoreDict[qId - 1];
         }
         else {
@@ -142,7 +142,7 @@ function writeScore() {
             console.log(response.result);
 
             if (document.getElementById("qr-on-label").classList.contains("active")) {
-              // scanner.start();
+              app.scanner.start();
               document.getElementById("selfie").style.display = 'inline-block';
               document.getElementById("selfie").style.width = '68%';
               document.getElementById("test-info").style.display = 'none';
@@ -291,7 +291,7 @@ function matchTest() {
           // TODO: Change code below to process the `response` object:
           console.log(response.result);
 
-          // scanner.start();
+          app.scanner.start();
           if (document.getElementById("qr-on-label").classList.contains("active")) {
             document.getElementById("selfie").style.display = 'inline-block';
             document.getElementById("selfie").style.width = '68%';
