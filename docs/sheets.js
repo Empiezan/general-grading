@@ -116,8 +116,8 @@ function writeScore() {
           return;
         }
         var score = document.getElementById("score").value;
-        if (score < 0) {
-          window.alert("Please Provide a Valid Score");
+        if (score < 0 || !Number.isInteger(+score)) {
+          window.alert("Please Provide a Valid Integer Score");
           return;
         }
         console.log("score: " + score);
@@ -185,6 +185,7 @@ function matchTest() {
       spreadsheetId: spSheetId,
       range: testType + '!A:A'
   }).then((response) => {
+      let examIndex = -1;
       var result = response.result;
       for (var i = 0; i < result.values.length; ++i) {
           if (result.values[i] == testID) {
@@ -195,6 +196,7 @@ function matchTest() {
 
       if (examIndex == -1) {
           console.log("Index DNE");
+          window.alert("Could Not Find Given Test ID!");
           return;
       }
 
@@ -210,14 +212,48 @@ function matchTest() {
           stud1 = 'B';
           stud2 = 'C';
           school = 'D';
-      } else {
+      }
+      else if (testType == 'TEAM') {
           school = 'B';
+      }
+      else {
+        window.alert("Please Provide a Valid Test ID");
+        return;
       }
 
       //Student 1
       if (stud1 !== 'X') {
         let stud1ID = document.getElementById('studentID1').value;
         console.log(stud1ID);
+        //Check if Student 1's ID exists
+        gapi.client.sheets.spreadsheets.values.get({
+          key: apiKey,
+          spreadsheetId: spSheetId,
+          range: 'Summary!B:B'
+        }).then(function(response) {
+          let stud1Exists = false;
+          var range = response.result;
+          if (range.values.length > 0) {
+            for (i = 0; i < range.values.length; i++) {
+              var row = range.values[i];
+              if (row[i] == stud1ID) {
+                stud1Exists = true;
+              }
+            }
+            if (!stud1Exists) {
+              window.alert("Student 1's ID Was Not Found in the 'Summary' Tab of the Spreadsheet");
+              return;
+            }
+          } else {
+            window.alert("No Student IDs Found In 'Summary' Spreadsheet");
+            return;
+          }
+        }, function(response) {
+          window.alert('Error: ' + response.result.error.message);
+          return;
+        });
+
+        //Enter Student 1's ID into Spreadsheet
         var params = {
             // The ID of the spreadsheet to update.
             spreadsheetId: spSheetId,  // TODO: Update placeholder value

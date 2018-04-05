@@ -89,6 +89,12 @@ function updateScoreLimit () {
       document.getElementById('submit').disabled = false;
     }
   }
+  if (parseInt(score) !== Number(score)) {
+    document.getElementById('score-warning-message').innerText = 'Please Enter an Integer Score';
+    document.getElementById('score-warning-message').style.display = 'block';
+    document.getElementById('submit').disabled = true;
+    console.log("here");
+  }
 }
 
 function updateQNum (){
@@ -159,7 +165,10 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#score').keypress(function (e) {
       if (e.which == 13) {
-        $('#submit').click();
+        updateScoreLimit();
+        if (document.getElementById('submit').disabled == false) {
+          $('#submit').click();
+        }
         return false;    //<---- Add this line
       }
     });

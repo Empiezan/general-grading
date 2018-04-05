@@ -20,9 +20,15 @@ scanner.addListener('scan', function (content) {
           document.getElementById("sc").style.display = 'block';
         } else {
           document.getElementById("schoolID").style.display = 'block';
-          document.getElementById("student1").style.display = 'block';
-          if (testType !== "IND") {
-              document.getElementById("student2").style.display = 'block';
+          if (testType !== "TEAM") {
+            document.getElementById("student1").style.display = 'block';
+            if (testType !== "IND") {
+                document.getElementById("student2").style.display = 'block';
+            }
+          }
+          else {
+            document.getElementById("student1").style.display = 'none';
+            document.getElementById("student2").style.display = 'none';
           }
         }
         document.getElementById("next").style.display = 'none';

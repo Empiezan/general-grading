@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     <meta name="theme-color" content="#000000">
+    <!-- Don't allow browser to cache the page -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
@@ -128,9 +132,9 @@
     </noscript>
 
     <div id="auth" class="btn-group" role="group" aria-label="Basic example">
-      <!-- <a href="/privacy_policy.html">
+      <a href="/privacy_policy.html">
         <button type="button" style="margin: 0 auto;" class="btn btn-secondary btn-sm">Privacy Policy</button>
-      </a> -->
+      </a>
       <button type="button" id="authorize-button" style="margin: 0 auto;" class="btn btn-secondary btn-sm">Authorize</button>
       <button type="button" id="signout-button" style="margin: 0 auto;" class="btn btn-secondary btn-sm">Sign Out</button>
     </div>
@@ -174,7 +178,7 @@
 
                 <div id="schoolID">
                     <label><b>School ID:</b></label>
-                    <input type="text" class="form-control" id="schoolID-input" placeholder="School ID"/>
+                    <input type="number" class="form-control" id="schoolID-input" placeholder="School ID"/>
                 </div>
 
                 <div id="student1">
@@ -230,15 +234,13 @@
             </form>
         </div>
     </div>
-    <!-- <script src="./instascan.min.js"></script> -->
     <script type="text/javascript" src="./app.js"></script>
+    <!-- <script type="text/javascript" src="./scanner.js"></script> -->
     <script type="text/javascript" src="./sheets.js"></script>
         <script async defer src="https://apis.google.com/js/api.js"
                 onload="this.onload=function(){};handleClientLoad()"
                 onreadystatechange="if (this.readyState === 'complete') this.onload()">
         </script>
-
-    <!-- <script type="text/javascript" src="./scanner.js"></script> -->
 
     <script type="text/javascript" src="./form.js"></script>
 
